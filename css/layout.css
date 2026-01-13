@@ -7,7 +7,7 @@
     justify-content: start;
     align-items: center;
     flex-direction: column;
-    background-image: url("assets/images/texture/dark-mosaic.png");
+    background-image: url("../assets/images/texture/dark-mosaic.png");
 }
 
 .page_container.home {
