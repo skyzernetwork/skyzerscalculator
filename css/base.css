@@ -1,0 +1,57 @@
+/* ===== [ FONT-FACES ] ===== */
+@font-face {
+  font-family: 'Kantumruypro';
+  src: url('../assets/fonts/KantumruyPro-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url('../assets/fonts/Lato-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ===== [ ROOT STYLES ] ===== */
+:root {
+    /* Fonts */
+    --font-primary: Kantumruypro, sans-serif;
+    --font-numbers: Lato, sans-serif;
+    /* Colors */
+    --black: #000000;
+    --white: #ffffff;
+    --gray-light: #d3d3d3;
+    --gray-dark: #252525;
+    --blue: #0080ff;
+    --red: #ff0000;
+    --green: #32cd32;
+    --yellow: #ffd700;
+    --purple: #9f2ec2;
+    --orange: #ff8c00;
+    --teal: #75dada;
+    --pink: #ff69b4;
+}
+
+/* ===== [ GLOBAL STYLES ] ===== */
+html,
+body {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    background-color: black;
+    color: var(--white);
+    overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}

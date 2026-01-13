@@ -1,0 +1,416 @@
+* {
+    user-select: none;
+}
+
+.calculator_container {
+    width: 30vw;
+    height: 90vh;
+    background-color: rgb(0, 0, 0);
+    overflow: hidden;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 50px;
+}
+
+.calculator_display {
+    width: 100%;
+    height: 20vh; /* desktop default */
+    background-color: transparent;
+    border: none;
+    color: white;
+    text-align: right;
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-weight: 300;       /* iOS-style thin font */
+    line-height: 1;
+    padding: 0 6vw;         /* space from edges */
+    box-sizing: border-box;  /* padding included in width */
+    
+    overflow-x: hidden;      /* hide scrollbar */
+    white-space: nowrap;     /* prevent wrapping */
+}
+
+.calculator_button_holder {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    /* vertical control */
+    height: 100%;
+    align-content: center;        /* centers grid vertically */
+    justify-content: center;
+
+    /* spacing */
+    gap: 1rem 1.5rem;
+
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+}
+
+.calculator_button {
+    width: 7rem;
+    height: 7rem;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-numbers);
+    font-size: 2.4em;
+    border-radius: 100em;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.calculator_button:active {
+    transform: scale(0.92);
+    filter: brightness(1.25);
+}
+
+.calculator_button:hover {
+    transform: scale(0.92);
+    filter: brightness(1.2);
+}
+
+.calculator_image {
+    width: 1.8em;
+    height: 1.8em;
+}
+
+.calculator_button.light {
+    background-color: grey;
+}
+
+.calculator_button.color {
+    background-color: rgb(144, 87, 215);
+}
+
+.calculator_button.medium {
+    background-color: rgb(42, 42, 42);
+}
+
+@media (max-width: 768px) and (orientation: portrait) {
+
+    .calculator_container {
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end; /* push content to bottom */
+        align-items: center;
+        padding-bottom: 2vh; /* gap from bottom */
+        box-sizing: border-box;
+    }
+
+    .calculator_display {
+        width: 90%;
+        height: auto;       /* allow natural height */
+        font-size: clamp(3.5rem, 10vw, 5rem);
+        padding: 0 5vw;
+        margin-bottom: 2vh; /* gap between display and buttons */
+        text-align: right;
+        white-space: nowrap;
+        overflow-x: hidden;
+    }
+
+    .calculator_button_holder {
+        width: 100%;
+        max-width: 100%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        justify-items: center;
+        gap: clamp(1rem, 4vw, 1.6rem);
+
+        /* remove fixed height */
+        height: auto;        /* buttons define height */
+        align-content: end;  /* push last row down */
+        padding: 0 5vw 2vh 5vw;
+        box-sizing: border-box;
+        margin-bottom: 2vh;  /* small bottom gap */
+    }
+
+    .calculator_button {
+        width: clamp(4.8rem, 20vw, 6.8rem);
+        height: clamp(4.8rem, 20vw, 6.8rem);
+        font-size: clamp(2em, 6vw, 2.6em);
+    }
+
+    .calculator_image {
+        width: 1.6em;
+        height: 1.6em;
+    }
+}
+
+@media (min-width: 568px) and (max-width: 1020px) and (orientation: landscape) {
+
+    .calculator_container {
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end; /* push content to bottom */
+        align-items: center;
+        padding-bottom: 2vh; /* gap from bottom */
+        box-sizing: border-box;
+    }
+
+    .calculator_display {
+        width: 35%;
+        height: auto;       /* allow natural height */
+        font-size: clamp(1rem, 8vw, 3rem);
+        padding: 0 5vw;
+        margin-bottom: 2vh; /* gap between display and buttons */
+        text-align: right;
+        white-space: nowrap;
+        overflow-x: hidden;
+    }
+
+    .calculator_button_holder {
+        width: 100%;
+        max-width: 100%;
+        display: grid;
+        grid-template-columns: repeat(4, .01fr);
+        justify-items: center;
+        gap: clamp(.4rem, 1vw, 2rem);
+
+        /* remove fixed height */
+        height: auto;        /* buttons define height */
+        align-content: end;  /* push last row down */
+        padding: 0 5vw 2vh 5vw;
+        box-sizing: border-box;
+        margin-bottom: 2vh;  /* small bottom gap */
+    }
+
+    .calculator_button {
+        width: clamp(2rem, 6vw, 7rem);
+        height: clamp(2rem, 6vw, 7rem);
+        font-size: clamp(1.2em, 1.5vw, 1.5em);
+    }
+
+    .calculator_image {
+        width: 1.5em;
+        height: 1.5em;
+    }
+}
+
+/* Medium Tablets */
+@media (min-width: 769px) and (max-width: 1023px) and (orientation: portrait) {
+
+    .calculator_container {
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end; /* push content to bottom */
+        align-items: center;
+        padding-bottom: 2vh; /* gap from bottom */
+        box-sizing: border-box;
+    }
+
+    .calculator_display {
+        width: 90%;
+        height: auto;       /* allow natural height */
+        font-size: clamp(4rem, 15vw, 10rem);
+        padding: 0 5vw;
+        margin-bottom: 2vh; /* gap between display and buttons */
+        text-align: right;
+        white-space: nowrap;
+        overflow-x: hidden;
+    }
+
+    .calculator_button_holder {
+        width: 100%;
+        max-width: 100%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        justify-items: center;
+        gap: clamp(1rem, 4vw, 1.6rem);
+
+        /* remove fixed height */
+        height: auto;        /* buttons define height */
+        align-content: end;  /* push last row down */
+        padding: 0 5vw 2vh 5vw;
+        box-sizing: border-box;
+        margin-bottom: 2vh;  /* small bottom gap */
+    }
+
+    .calculator_button {
+        width: clamp(6rem, 30vw, 9rem);
+        height: clamp(6rem, 30vw, 9rem);
+        font-size: clamp(2em, 6vw, 2.6em);
+    }
+
+    .calculator_image {
+        width: 1.6em;
+        height: 1.6em;
+    }
+}
+
+/* Large Tablets */
+@media (min-width: 1024px) and (max-width: 1366px) and (orientation: portrait) {
+
+    .calculator_container {
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end; /* push content to bottom */
+        align-items: center;
+        padding-bottom: 2vh; /* gap from bottom */
+        box-sizing: border-box;
+    }
+
+    .calculator_display {
+        width: 90%;
+        height: auto;       /* allow natural height */
+        font-size: clamp(4rem, 12vw, 10rem);
+        padding: 0 5vw;
+        margin-bottom: 2vh; /* gap between display and buttons */
+        text-align: right;
+        white-space: nowrap;
+        overflow-x: hidden;
+    }
+
+    .calculator_button_holder {
+        width: 100%;
+        max-width: 100%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        justify-items: center;
+        gap: clamp(1rem, 4vw, 1.6rem);
+
+        /* remove fixed height */
+        height: auto;        /* buttons define height */
+        align-content: end;  /* push last row down */
+        padding: 0 5vw 2vh 5vw;
+        box-sizing: border-box;
+        margin-bottom: 2vh;  /* small bottom gap */
+    }
+
+    .calculator_button {
+        width: clamp(7rem, 30vw, 10rem);
+        height: clamp(7rem, 30vw, 10rem);
+        font-size: clamp(3.5em, 8vw, 2.6em);
+    }
+
+    .calculator_image {
+        width: 1.6em;
+        height: 1.6em;
+    }
+}
+
+/* Medium Tablets - Landscape */
+@media (min-width: 1024px) and (max-width: 1180px) and (orientation: landscape) {
+
+    .calculator_container {
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end; /* push content to bottom */
+        align-items: center;
+        padding: 2vh 5vw; /* top/bottom padding, side margin */
+        box-sizing: border-box;
+    }
+
+    .calculator_display {
+        width: 50%; /* slightly narrower to fit landscape */
+        height: auto;
+        font-size: clamp(2.5rem, 8vw, 8rem); /* scale down a bit */
+        padding: 0 5vw;
+        margin-bottom: 2vh;
+        text-align: right;
+        white-space: nowrap;
+        overflow-x: hidden;
+    }
+
+    .calculator_button_holder {
+        width: 90%; /* narrower to fit landscape */
+        max-width: 100%;
+        display: grid;
+        grid-template-columns: repeat(4, .1fr);
+        justify-items: center;
+        gap: clamp(1rem, 2vw, 1.1rem);
+        height: auto;
+        align-content: end;
+        padding: 0 5vw 2vh 5vw;
+        box-sizing: border-box;
+        margin-bottom: 2vh;
+    }
+
+    .calculator_button {
+        width: clamp(4rem, 8vw, 8rem);
+        height: clamp(4rem, 8vw, 8rem);
+        font-size: clamp(2em, 2vw, 2.6em);
+    }
+
+    .calculator_image {
+        width: 1.5em;
+        height: 1.5em;
+    }
+}
+
+/* Large Tablets - Landscape */
+@media (min-width: 1181px) and (max-width: 1366px) and (orientation: landscape) {
+
+    .calculator_container {
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end; /* push content to bottom */
+        align-items: center;
+        padding: 2vh 5vw;
+        box-sizing: border-box;
+    }
+
+    .calculator_display {
+        width: 60%;
+        height: auto;
+        font-size: clamp(4rem, 10vw, 10rem);
+        padding: 0 5vw;
+        margin-bottom: 2vh;
+        text-align: right;
+        white-space: nowrap;
+        overflow-x: hidden;
+    }
+
+    .calculator_button_holder {
+        width: 90%;
+        max-width: 100%;
+        display: grid;
+        grid-template-columns: repeat(4, .1fr);
+        justify-items: center;
+        gap: clamp(2rem, 1vw, 1.1rem);
+        height: auto;
+        align-content: end;
+        padding: 0 5vw 2vh 5vw;
+        box-sizing: border-box;
+        margin-bottom: 2vh;
+    }
+
+    .calculator_button {
+        width: clamp(5rem, 12vw, 8rem);
+        height: clamp(5rem, 12vw, 8rem);
+        font-size: clamp(2em, 5vw, 2.6em);
+    }
+
+    .calculator_image {
+        width: 1.6em;
+        height: 1.6em;
+    }
+}
